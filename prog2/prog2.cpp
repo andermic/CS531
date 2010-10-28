@@ -24,24 +24,32 @@ const bool NONADMISSIBLE = false;
 const int M = 3;
 const int NODEMAX = 1000000;
 
-void display(vector< string > p) {
-     int max_plates = 0;
-     int i;
-     for(i = 0; i < p.size(); ++i) {
-         if(p[i].size() > max_plates)
-             max_plates = p[i].size();
-     }
-     for(i = max_plates - 1; i >= 0; --i) {
-         for(int ii = 0; ii < p.size(); ++ii) {
-             if(p[ii].size() > i) {
-                 for(int iii = atoi(&p[ii][p[ii].size()-1]); iii > 0; --iii)
-                     cout << '-';
-                 p[ii].erase(p[ii].size()-1, 1);
-             }
-             cout << "\t\t";
-         }
-     cout << '\n';
-     }
+void display(vector< string > p, bool fancy) {
+    if(fancy) {
+        int max_plates = 0;
+        int i;
+        for(i = 0; i < p.size(); ++i) {
+            if(p[i].size() > max_plates)
+                max_plates = p[i].size();
+        }
+        for(i = max_plates - 1; i >= 0; --i) {
+            for(int ii = 0; ii < p.size(); ++ii) {
+                if(p[ii].size() > i) {
+                    for(int iii = atoi(&p[ii][p[ii].size()-1]); iii > 0; --iii)
+                        cout << '-';
+                    p[ii].erase(p[ii].size()-1, 1);
+                }
+                cout << "\t\t";
+            }
+        cout << endl;
+        }
+    }
+    else {
+        for(int i = 0; i < p.size(); ++i) {
+            cout << p[i] << endl;
+        }
+        cout << endl;
+    }
 }
 
 class Node {
@@ -99,16 +107,20 @@ class Search {
                 frontier.pop_back();
 
                 //DEBUG BEGIN
+                expanded++;
                 system("clear");
-                display(cur.state);
-                cout << endl << "Press enter to continue";
+                display(cur.state, true);
+                cout << " Nodes expanded: " << expanded << endl;
                 char blah;
                 cin >> blah;
                 //DEBUG END
 
-                if(goaltest(cur))
-                    cout << endl << "SOLUTION FOUND"; //DEBUG
+                if(goaltest(cur)) {
+                    cout << endl << "SOLUTION FOUND" << endl << "Press enter to continue";
+                    char blah;
+                    cin >> blah;
                     return cur;
+                }
                 explored.push_back(cur.state);
 
                 for(int i = 0; i < cur.state.size(); ++i) {
@@ -127,11 +139,11 @@ class Search {
                             child.state[ii].push_back(c);
 
                             is_in_frontier_explored = false;
-                            for(int i = 0; i < frontier.size(); ++i) {
-                                if(equal(child.state.begin(),child.state.end(),frontier[i].state.begin())) {
+                            for(int iii = 0; iii < frontier.size(); ++iii) {
+                                if(equal(child.state.begin(),child.state.end(),frontier[iii].state.begin())) {
                                     is_in_frontier_explored = true;
-                                    if(child.f < frontier[i].f) {
-                                        frontier[i] = child;
+                                    if(child.f < frontier[iii].f) {
+                                        frontier[iii] = child;
                                     }
                                 }
                             }
@@ -162,7 +174,7 @@ class Search {
             Node solution;
 
             if(search == A_STAR)
-                solution = astar(*root);                
+                solution = astar(*root); 
             else if(search == RBFS)
                 solution = rbfs(*root);
 
@@ -173,13 +185,17 @@ class Search {
                 stack<Node*> solution_path;
                 Node* cur = &solution;
                 while(cur != NULL) {
+                    system("clear");
+                    display(cur->state, true);
+                    char blah;
+                    cin >> blah;
                     solution_path.push(cur);
                     cur = cur->parent;
                 }
                 while(!solution_path.empty()) {
                     //DEBUG BEGIN
                     system("clear");
-                    display(solution_path.top()->state);
+                    //display(solution_path.top()->state, true);
                     solution_path.pop();
                     cout << endl << "Press enter to continue";
                     char blah;
@@ -188,11 +204,12 @@ class Search {
                 }
             }
         }
- 
-        bool goaltest(Node node) {
+        bool goaltest(Node node) { 
             if(node.state[0].size() == n) {
                 for(int i = 0; i < n; ++i) {
-                    if(atoi(&node.state[0][i]) != n-i) return false;
+                    if(node.state[0][i]-48 != n-i) {
+                        return false;
+                    }
                 }
                 return true;
             }
@@ -200,11 +217,7 @@ class Search {
         }
 };
 
-struct SearchTree {
-    Node* root;
-};
-
 int main() {
-    string test = "123";
+    string test = "12";
     Search* a = new Search(test, A_STAR, ADMISSIBLE);
 }

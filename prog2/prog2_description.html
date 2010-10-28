@@ -1,0 +1,131 @@
+<title>CS531 Programming Assignment 2</title>
+<center> 
+<h1>CS531 Program 2 (Due October 26, 2010)</h1>
+<h1> Towers of Corvallis </h1> 
+</center> 
+
+
+<p>
+If you had attended Prof. Cull's talk yesterday, you know all 
+about the Towers of Hanoi. The nice thing about the Towers of 
+Hanoi is that it does not need search to solve it. In this assignment
+you will be solving a more difficult(!) puzzle called Towers of Corvallis. 
+Towers of Corvallis consist of m pegs and n disks. We fix m=3. Unlike 
+in Towers of Hanoi, here any disk can go on any other. The goal simply
+is to get from an initial position to a goal position in the smallest 
+number of steps. Remember you can only remove the top disk 
+from the peg at any time and place it on the top of the disks on 
+another peg! 
+
+<p>
+Suppose m=3 and n=10. Let us number the disks 0-9 so that we 
+can denote a state with 3 numbers or lists or arrays or whatever. 
+For example, (0123456789,-,-) is a state and (012,3456,789) is 
+another state, etc. The leftmost digit in the number is at the top. 
+Let us fix the goal (final) state to be 
+(9876543210,_,_) if there are 10 disks (and similarly for n disks). 
+Also fix the initial state to be some configuration of disks, 
+all of which are on the first peg. Call the three pegs A,B, and C. 
+
+<p> 
+You will write a search program to solve this puzzle using A* and RBFS. 
+You will also design and implement one admissible heuristic for this 
+problem and one non-admissible heuristic. 
+
+<p> 
+You may use any programming language, but it must be modularized 
+as much as possible. The code must be developed completely by  
+your team. 
+
+<p> NMAX is the maximum number of nodes you have the time to search. 
+    Set this so that the search takes less that 10  minutes with your 
+    least informed heuristic and slowest algorithm on the hardest 
+    problems on your computer. 
+
+</ul>
+<pre> 
+     For the two algorithms A* and RBFS 
+        For each heuristic function h, 
+          For at least 4 different sizes (number of disks)
+             For each of the 20 problems p, 
+		Solve p using h or until NMAX nodes are expanded. 
+                Record the solution length if successful, the number of nodes 
+	               expanded, and the total CPU time spent on evaluating
+                       the heuristic and on solving the whole problem. 
+</pre> 
+
+A list of several problems with numbers of disks 
+<a href="perms-4.txt"> 4 </A>, 
+<a href="perms-5.txt"> 5 </A>, 
+<a href="perms-6.txt"> 6 </A>, 
+<a href="perms-7.txt"> 7 </A>, 
+<a href="perms-8.txt"> 8 </A>, 
+<a href="perms-9.txt"> 9 </A>, 
+<a href="perms-10.txt"> 10 </A>, 
+are available. Only the starting state is described 
+for each problem and all the disks are assumed to be on peg A. 
+The final state for all problems is the same. It is to get all 
+disks to peg A in the order 9876543210. The top disk is the leftmost. 
+As described in the pseudocode, you should at least try 4 different 
+sizes (number of disks) of problems. 
+
+<p>
+Plot the number of nodes searched against the problem size (number of disks)
+for the two algorithms and the two heuristics. Plot similar graphs 
+for CPU time vs number of disks. 
+
+<p>
+Show in a table, the average solution lengths found 
+by the different heuristics for each problem size (number of disks), 
+heuristic, and search algorithm. 
+
+<p> 
+For the report, let us follow the same format you used for the first 
+programming assignment. Your report should look like a 
+research paper with abstract, introduction (a summary of the goals and 
+results), pseudocode of the algorithms, experimental setup, result tables
+and plots, and the discussion. You should include answers to following 
+questions in your discussion of results. Please feel free to add any other 
+important observations. 
+
+<ol> 
+<li>   Show an example solution sequence for each algorithm for the largest 
+size you tested in the following format: 
+<pre> 
+[0123,_,_], [123,0,_], [23,0,1], [23,_,01] ... 
+</pre> 
+
+<li>	Is there a clear preference ordering among the heuristics you 
+	tested considering the number of nodes searched and the total 
+	CPU time taken to solve the problems for the two algorithms? 
+<li>	
+	Can a small sacrifice in optimality give a large reduction 
+	in the number of nodes expanded? What about CPU time?
+<li>	
+	How did you come up with your heuristic evaluation functions? 
+
+<li>    How do the two algorithms compare in the amount of search 
+	involved and the cpu-time? 
+
+<li>    Do you think that either of these algorithms scale to even larger 
+        problems? What is the largest problem you could solve with the best 
+        algorithm+heuristic combination? Report the wall-clock time,
+        CPU-time, and the number of nodes searched.          
+
+<li>    Is there any tradeoff between how good a heuristic is in cutting 
+        down the number of nodes and how long it took to compute? Can you 
+        quantify it? 
+
+<li>    Is there anything else you found that is of interest? 
+</ol>
+
+<b> Important Note: </b> It is very important for this assignment 
+to write efficient code. 
+
+<p> Submit the source code using the <A href="http://engr.oregonstate.edu/teach">
+ENGR assignment submission system</A>. Click "Login to ENGR". Login, 
+and click the "Submit an Assignment" button. 
+ 
+Submit the report in the class on Oct, 26. </H2>  
+<hr> 
+
