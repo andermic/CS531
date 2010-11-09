@@ -1,6 +1,6 @@
-from os import system #For clearing the screen
-from itertools import product #Product takes the cartesian product of two lists
-from copy import deepcopy
+from os import system # For clearing the screen
+from itertools import product # product() takes the cartesian product of two lists
+from copy import deepcopy # deepcopy() returns a deepcopy of an object
 
 class Board:
     b = list()
@@ -9,7 +9,7 @@ class Board:
         self.b = board
 
     def display(self):
-        system('clear')
+        #system('clear')
         print '   a b c   d e f   g h i'
         for i in range(3):
             for j in range(3):
@@ -70,6 +70,8 @@ class Board:
         while(keep_going):
             keep_going = False
             domains = self.get_domains()
+            if domains == False:
+                return False
             if naked_triples:
                 domains = self.apply_naked_triples(domains)
             for i in range(9):
@@ -132,12 +134,6 @@ class Board:
                     # "                                   " in boxes
                     box_rows = range(j*3,(j+1)*3)
                     box_cols = range(k*3,(k+1)*3)
-                    '''
-                    print box_rows
-                    print box_cols
-                    print [domains[l][m] for l,m in product(box_rows,box_cols) if len(domains[l][m]) != 1]
-                    print
-                    '''
                     box_doms = [domains[l][m] for l,m in product(box_rows,box_cols) if len(domains[l][m]) != 1]
                     if box_doms == []:
                         continue
@@ -154,31 +150,29 @@ class Board:
         # k=2
         for i in range(1,9):
             for j in range(i+1,10):
+                si = str(i)
+                sj = str(j)
                 # Check rows/columns
                 for k in range(9):
                     col_list = []
                     row_list = []
                     for l in range(9):
-                        if i in domains[k][l] and j in domains[k][l]:
+                        if domains[k][l] == [si,sj]:
                             col_list.append(l)
-                        if i in domains[l][k] and j in domains[l][k]:
+                        if domains[l][k] == [si,sj]:
                             row_list.append(l)
                     if len(col_list) == 2:
                         for m in range(9):
-                            if i in domains[k][m] and m not in col_list:
-                                print 'Removal'
-                                domains[k][m].remove(i)
-                            if j in domains[k][m] and m not in col_list:
-                                print 'Removal'
-                                domains[k][m].remove(j)
+                            if si in domains[k][m] and m not in col_list:
+                                domains[k][m].remove(si)
+                            if sj in domains[k][m] and m not in col_list:
+                                domains[k][m].remove(sj)
                     if len(row_list) == 2: 
                         for m in range(9):
-                            if i in domains[m][k] and m not in row_list:
-                                print 'Removal'
-                                domains[m][k].remove(i)
-                            if j in domains[m][k] and m not in row_list:
-                                print 'Removal'
-                                domains[m][k].remove(j)
+                            if si in domains[m][k] and m not in row_list:
+                                domains[m][k].remove(si)
+                            if sj in domains[m][k] and m not in row_list:
+                                domains[m][k].remove(sj)
 
                 # Check boxes
                 for k,l in product(range(3),range(3)):
@@ -186,73 +180,100 @@ class Board:
                     box_cols = range(l*3,(l+1)*3)
                     box_list = []
                     for m,n in product(box_rows,box_cols):
-                        if i in domains[m][n] and j in domains[m][n]:
+                        if domains[m][n] == [si,sj]:
                             box_list.append([m,n])
                     if len(box_list) == 2:
                         for m,n in product(box_rows,box_cols):
-                            if i in domains[m][n] and [m,n] not in box_list:
-                                print 'Removal'
-                                domains[m][n].remove(i)
-                            if j in domains[m][n] and [m,n] not in box_list:
-                                print 'Removal'
-                                domains[m][n].remove(j)
+                            if si in domains[m][n] and [m,n] not in box_list:
+                                domains[m][n].remove(si)
+                            if sj in domains[m][n] and [m,n] not in box_list:
+                                domains[m][n].remove(sj)
 
         # k=3
         for h in range(1,8):
             for i in range(h+1,9):
                 for j in range(i+1,10):
+                    sh = str(h)
+                    si = str(i)
+                    sj = str(j)
+
                     # Check rows/columns
                     for k in range(9):
                         col_list = []
                         row_list = []
                         for l in range(9):
-                            if h in domains[k][l] and i in domains[k][l] and j in domains[k][l]:
+                            if domains[k][l] in [[sh,si,sj], [sh,si], [sh,sj], [si,sj]]:
                                 col_list.append(l)
-                            if h in domains[k][l] and i in domains[l][k] and j in domains[l][k]:
+                            if domains[l][k] in [[sh,si,sj], [sh,si], [sh,sj], [si,sj]]:
                                 row_list.append(l)
                         if len(col_list) == 3:
                             for m in range(9):
-                                if h in domains[k][m] and m not in col_list:
-                                    print 'Removal'
-                                    domains[k][m].remove(h)
-                                if i in domains[k][m] and m not in col_list:
-                                    print 'Removal'
-                                    domains[k][m].remove(i)
-                                if j in domains[k][m] and m not in col_list:
-                                    print 'Removal'
-                                    domains[k][m].remove(j)
+                                if sh in domains[k][m] and m not in col_list:
+                                    domains[k][m].remove(sh)
+                                if si in domains[k][m] and m not in col_list:
+                                    domains[k][m].remove(si)
+                                if sj in domains[k][m] and m not in col_list:
+                                    domains[k][m].remove(sj)
                         if len(row_list) == 3: 
                             for m in range(9):
-                                if h in domains[m][k] and m not in row_list:
-                                    print 'Removal'
-                                    domains[m][k].remove(h)
-                                if i in domains[m][k] and m not in row_list:
-                                    print 'Removal'
-                                    domains[m][k].remove(i)
-                                if j in domains[m][k] and m not in row_list:
-                                    print 'Removal'
-                                    domains[m][k].remove(j)
+                                if sh in domains[m][k] and m not in row_list:
+                                    domains[m][k].remove(sh)
+                                if si in domains[m][k] and m not in row_list:
+                                    domains[m][k].remove(si)
+                                if sj in domains[m][k] and m not in row_list:
+                                    domains[m][k].remove(sj)
                     # Check boxes
                     for k,l in product(range(3),range(3)):
                         box_rows = range(k*3,(k+1)*3)
                         box_cols = range(l*3,(l+1)*3)
                         box_list = []
                         for m,n in product(box_rows,box_cols):
-                            if h in domains[m][n] and i in domains[m][n] and j in domains[m][n]:
+                            if domains[m][n] in [[sh,si,sj], [sh,si], [sh,sj], [si,sj]]:
                                 box_list.append([m,n])
                         if len(box_list) == 3:
                             for m,n in product(box_rows,box_cols):
-                                if h in domains[m][n] and [m,n] not in box_list:
-                                    print 'Removal'
-                                    domains[m][n].remove(h)
-                                if i in domains[m][n] and [m,n] not in box_list:
-                                    print 'Removal'
-                                    domains[m][n].remove(i)
-                                if j in domains[m][n] and [m,n] not in box_list:
-                                    print 'Removal'
-                                    domains[m][n].remove(j)
+                                if sh in domains[m][n] and [m,n] not in box_list:
+                                    domains[m][n].remove(sh)
+                                if si in domains[m][n] and [m,n] not in box_list:
+                                    domains[m][n].remove(si)
+                                if sj in domains[m][n] and [m,n] not in box_list:
+                                    domains[m][n].remove(sj)
  
         return domains
+
+    def backtrack(self,most_constrained):
+        if self.is_solved():
+            return
+
+        # Apply rules......
+
+        sq = []
+        domains = self.get_domains()
+
+        # Select a square to try
+        if most_constrained:
+            least_len = [10,-1,-1]
+            for i,j in product(range(9),range(9)):
+                leng = len(domains[i][j])
+                if leng < least_len[0] and self.b[i][j] == '-':
+                    least_len = [leng,i,j]
+                    if leng == 2:
+                        break
+            sq = least_len[1],least_len[2]
+        else:
+            for i in range(9):
+                for j in range(9):
+                    if self.b[i][j] == '-':
+                        sq = i,j
+
+        # Try each value in sq's domain until one works
+        for val in domains[sq[0]][sq[1]]:
+            self.b[sq[0]][sq[1]] = val
+            if self.get_domains() != False:
+                self.backtrack(most_constrained)
+            if self.is_solved():
+                return
+        self.b[sq[0]][sq[1]] = '-'
 
     def is_solved(self):
         # If any square is not yet assigned a number, return false. Else return
@@ -272,21 +293,22 @@ repo = [[i for i in line.replace('0','-') if not i in (' ','\n')] for line in re
 sudokus = [repo[i*11+1:i*11+10] for i in range(len(repo)/11)]
 
 '''
-sudoku = Board(sudokus[0])
-sudoku.apply_rule2(True)
+sudoku = Board(sudokus[2])
+sudoku.backtrack(True)
 sudoku.display()
 '''
 
 a = []
 for i in range(len(sudokus)):
-    print 'Processing sudoku %d' % i
-    sudoku = Board(sudokus[i])
-    sudoku.apply_rule1(True)
-    sudoku.apply_rule2(True)
-    a += difficulties[i],sudoku.is_solved()
+    if i == 33:
+        print 'Processing sudoku %d' % i
+        sudoku = Board(sudokus[i])
+        sudoku.backtrack(True)
+        a += difficulties[i],sudoku.is_solved()
 print
 print len([i for i in a if i == False])
 
-#55/77 still unsolved after applying rule 1
-#54/77 still unsolved after applying rule 1, then rule 2
-#51/77 still unsolved after applying the two rules repeatedly
+#55/77 still unsolved after applying rule 1. 26/77 with naked triples
+#54/77 still unsolved after applying rule 1, then rule 2. 26/77 with naked triples
+#51/77 still unsolved after applying the two rules repeatedly. 23/77 with naked triples
+
