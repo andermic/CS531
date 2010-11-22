@@ -1,0 +1,40 @@
+Expand knowledge base as agent moves through environment, w/ help of prover9
+get_action as shows on page 270. Modify alg so that agent only shoots if it has
+ sensed a blocking stench.
+informed search procedure
+   evaluation function / heuristic
+Should display the solution for a single problem, as well as the stats for the
+ solution of multiple problems
+
+Knowledge base:
+there is only one wumpus in an environment
+squares adjacent to a wumpus are smelly, keep in mind that it may be dead though
+squares adjacent to a pit are breezy
+a square is safe iff it contains no wumpus and no pit
+if wumpus_alive is false than there is no wumpus on any square
+the square that glitters contains gold
+once the shoot action occurs, have_arrow is false
+once the scream percept occurs, wumpus_alive is false
+if facing_north and turn_right, then facing_east
+    eight implicit combinations of facing direction and action
+the agent's location at some time is based on the last action taken, the last
+ location, and the bump percept
+
+Vocab:
+squares [x,y]
+unvisited([x,y])
+pit([x,y])
+breeze([x,y])
+stench([x,y])
+haveArrow()
+wumpusAlive()
+ok([x,y])
+at(Agent/Wumpus, square, time)
+adjacent([x,y],[a,b])
+
+Actions:
+forward
+turn(left) and turn(right)
+grab
+shoot
+climb

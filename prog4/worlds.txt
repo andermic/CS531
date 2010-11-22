@@ -1,0 +1,600 @@
+0
+|  B  |    G|   S | W   
+|P    |  B  |     |  BS 
+|  B  |     |  B  |P    
+|     |  B  |P    |  B  
+
+1
+| WB  |   S |     |     
+|P  S |  B G|     |     
+|  B  |P    |  B  |     
+|     |  B  |     |     
+
+2
+|  B  |P    |  B  |     
+|P    |  B  |     |     
+|  B  |     |   S |  B G
+|     |   S | WB  |P  S 
+
+3
+|     |  B  |P    |  B  
+|  B  |     |  B  |     
+|P    |  B  |    G|   S 
+|  B  |P    |  BS | W   
+
+4
+|   S |     |     |     
+| W   |   S |     |     
+|   S |     |     |     
+|     |     |     |    G
+
+5
+|P    |  B  |     |     
+|  B  |     |   S |     
+|     |   SG| W   |   S 
+|     |     |   S |     
+
+6
+|   S |     |     |     
+| W   |  BSG|     |     
+|  BS |P B  |  B  |     
+|  B  |P B  |P B  |  B  
+
+7
+|P B  |P B  |P B  |  B  
+|  B  |  B  |  BS |     
+|     |   S | W   |   S 
+|     |    G|   S |     
+
+8
+| WB  |P  S |  B  |    G
+|   S |  B  |  B  |     
+|     |  B  |P    |  B  
+|     |     |  B  |     
+
+9
+|  B  |  B  |     |     
+|P B  |P BS |  B  |     
+|  BS | WB  |  BS |     
+|     |  BSG|P    |  B  
+
+10
+|     |   S |     |     
+|   S | W   |   S |     
+|     |   S |  B G|     
+|     |  B  |P    |  B  
+
+11
+|  B  |     |     |     
+|P    |  B  |     |     
+|  B  |   S |     |    G
+|   S | W   |   S |     
+
+12
+|  B  |P    |  B  |     
+|     |  B  |  B G|     
+|     |  B  |P    |  BS 
+|     |     |  BS | W   
+
+13
+|     |  B  |     |     
+|  B  |P    |  B  |     
+|     |  B G|     |   S 
+|     |     |   S | W   
+
+14
+|  B  |  B G|     |     
+|P BS |P B  |  B  |     
+| WB  |P BS |P B  |  B  
+|   S |  B  |P B  |  B  
+
+15
+|     |  B  |P    |  BS 
+|     |     |  BS | W   
+|     |     |     |  BSG
+|     |     |  B  |P    
+
+16
+|     |     |   S | WB  
+|  B  |    G|  B  |P  S 
+|P    |  B  |     |  B  
+|  B  |P    |  B  |     
+
+17
+|     |  B  |P    |  BS 
+|     |     |  BSG| WB  
+|     |     |  B  |P  S 
+|     |     |     |  B  
+
+18
+|     |     |     |     
+|   S |     |    G|     
+| W   |   S |     |     
+|   S |     |     |     
+
+19
+|  B G|     |  B  |   S 
+|P B  |  B  |P  S | WB  
+|P B  |  B  |  B  |P  S 
+|  B  |     |     |  B  
+
+20
+|     |     |  B  |  B  
+|     |  BS |P B  |P B  
+|   S | W   |  BSG|P B  
+|     |  BS |P    |  B  
+
+21
+|  B  |     |     |     
+|P    |  B  |    G|     
+|  B  |     |     |   S 
+|     |     |   S | W   
+
+22
+|  B  |P    |  B G|     
+|  B  |  B  |     |     
+|P    |  B  |     |   S 
+|  B  |     |   S | W   
+
+23
+|  B  |  B  |   S | WB  
+|P B  |P B  |  B  |P  S 
+|P B  |  B  |  B  |  B G
+|  B  |  B  |P B  |P B  
+
+24
+|     |  B  |P    |  B  
+|   S |  B  |  B  |P    
+| WB  |P  S |  B  |  B G
+|   S |  B  |     |     
+
+25
+|     |     |     |     
+|    G|   S |     |     
+|   S | W   |   S |     
+|     |   S |     |     
+
+26
+|     |  B  |P    |  BSG
+|     |     |  BS | W   
+|     |  B  |     |   S 
+|  B  |P    |  B  |     
+
+27
+|    G|  B  |P    |  B  
+|  B  |     |  BS |  B  
+|P    |  BS | WB  |P  S 
+|  B  |     |   S |  B  
+
+28
+|     |   S |     |     
+|   S | W   |  BS |    G
+|     |  BS |P    |  B  
+|     |     |  B  |     
+
+29
+|     |   S |     |  B  
+|  BS | W   |  BS |P    
+|P    |  BS |  B G|  B  
+|  B  |  B  |P    |  B  
+
+30
+|     |     |     |     
+|     |     |  B  |  B  
+|     |  BS |P B  |P B  
+|   S | W   |  BS |  B G
+
+31
+|P    |  B G|     |   S 
+|  B  |     |  BS | W   
+|     |  B  |P    |  BS 
+|  B  |P    |  B  |     
+
+32
+|    G|     |     |     
+|  B  |     |     |   S 
+|P    |  B  |   S | W   
+|  B  |     |     |   S 
+
+33
+|  B  |P B  |P B  |  B  
+|     |  B  |  BS |     
+|  B  |P  S | WB  |   S 
+|     |  B G|   S |     
+
+34
+|     |   S | W   |   S 
+|     |     |  BS |  B  
+|    G|  B  |P B  |P B  
+|     |     |  B  |  B  
+
+35
+|  BS |P    |  B  |     
+| W   |  BS |     |     
+|  BS |P    |  B G|     
+|     |  B  |     |     
+
+36
+|     |     |  B  |  B  
+|    G|  B  |P B  |P B  
+|  B  |P    |  B  |  BS 
+|     |  B  |   S | W   
+
+37
+| W   |  BS |P    |  B G
+|  BS |     |  B  |P    
+|P    |  B  |P B  |  B  
+|  B  |  B  |P B  |  B  
+
+38
+|  B  |P    |  B  |     
+|P  S |  B  |     |     
+| WB  |   S |     |     
+|   S |    G|     |     
+
+39
+|  B  |P    |  BS | W   
+|P    |  B G|     |   S 
+|  B  |     |  B  |     
+|     |  B  |P    |  B  
+
+40
+|P    |  BS |  B  |     
+|  BS | WB  |P  S |  B G
+|     |  BS |  B  |     
+|  B  |P    |  B  |     
+
+41
+|P    |  B  |     |     
+|  B  |    G|     |     
+|     |     |     |   S 
+|     |     |   S | W   
+
+42
+|     |     |     |   S 
+|     |     |   S | WB  
+|     |    G|  B  |P BS 
+|     |     |  B  |P B  
+
+43
+|     |  B  |  B  |     
+|  B  |P B  |P B  |  B  
+|P    |  B  |  BS |    G
+|  B  |   S | W   |   S 
+
+44
+|P  S |  B  |     |     
+| WB  |  BS |  B  |     
+|  BSG|P B  |P B  |  B  
+|     |  B  |  B  |     
+
+45
+|     |     |     |    G
+|     |     |     |     
+|     |   S |     |  B  
+|   S | W   |  BS |P    
+
+46
+|     |  B  |     |     
+|  B  |P    |  BS |     
+|     |  BS | W   |   S 
+|  B  |P    |  BS |    G
+
+47
+|  B  |   S |     |     
+|P  S | WB  |  BS |    G
+|  B  |  BS |P    |  B  
+|  B  |P    |  B  |     
+
+48
+|   S | W   |   SG|     
+|     |   S |     |     
+|     |  B  |     |     
+|  B  |P    |  B  |     
+
+49
+|     |    G|     |     
+|     |     |     |   S 
+|     |     |  BS | WB  
+|     |  B  |P B  |P BS 
+
+50
+|     |     |   S |     
+|     |   S | W   |   S 
+|     |     |  BS |     
+|     |  B G|P    |  B  
+
+51
+|  B  |P    |  B  |  B  
+|  B  |  B  |  B  |P  S 
+|P B  |P B  |P BS | WB  
+|  B  |P B  |P B  |  BSG
+
+52
+|  B  |     |   S | W   
+|P B  |  B  |  B  |   S 
+|P B  |  B  |P    |  B  
+|  B  |P    |  B G|     
+
+53
+|     |  B  |     |     
+|  B  |P  S |  B G|  B  
+|   S | WB  |  BS |P    
+|     |   S |     |  B  
+
+54
+|   S |  B  |P    |  B  
+| W   |  BS |  B  |     
+|  BS |P B  |  B  |     
+|  B  |P B  |  B  |    G
+
+55
+|  B  |P    |  B  |   S 
+|     |  B  |   SG| WB  
+|     |  B  |  B  |P  S 
+|  B  |P    |  B  |  B  
+
+56
+|P    |  BS | W   |   S 
+|  B  |P    |  BS |  B  
+|    G|  B  |P B  |P B  
+|     |     |  B  |  B  
+
+57
+|P    |  B  |P    |  B  
+|  B  |   SG|  B  |     
+|   S | W   |   S |     
+|     |   S |     |     
+
+58
+|     |  B  |P    |  B  
+|  B  |P    |  B  |     
+|     |  B  |   S |    G
+|     |   S | W   |   S 
+
+59
+|    G|  B  |  B  |     
+|  BS |P B  |P B  |  B  
+| W   |  BS |  B  |     
+|  BS |P B  |P B  |  B  
+
+60
+|     |   S |     |  B  
+|   S | W   |  BS |P B  
+|     |   S |  B  |P B  
+|     |     |     |  B G
+
+61
+|P B  |P B  |  BS |     
+|  B  |  BSG| W   |   S 
+|     |  B  |   S |     
+|  B  |P    |  B  |     
+
+62
+|  B  |P BS |P B  |  B  
+|   S | WB  |  BS |     
+|     |   SG|     |     
+|     |     |     |     
+
+63
+|     |  B  |P B  |  B  
+|     |  BS |P B  |  B  
+|   S | W   |  BS |     
+|     |   S |    G|     
+
+64
+|P B  |P B  |  B  |   S 
+|  B  |  B  |  BS | W   
+|     |  B  |P B  |  BS 
+|     |  B  |P B  |  B G
+
+65
+|     |     |  B  |    G
+|   S |  B  |P    |  B  
+| W   |   S |  B  |P    
+|   S |     |     |  B  
+
+66
+|     |     |   S |     
+|  B G|  BS | W   |   S 
+|P B  |P B  |  BS |  B  
+|  B  |P B  |P B  |P B  
+
+67
+|     |     |   S |     
+|     |   SG| WB  |   S 
+|     |  B  |P  S |  B  
+|     |     |  B  |     
+
+68
+|  B  |     |     |     
+|P    |  BS |    G|     
+|  BS | W   |   S |  B  
+|     |   S |  B  |P    
+
+69
+|     |     |   S | W   
+|     |     |  B  |  BS 
+|    G|  B  |P B  |P B  
+|  B  |P    |  B  |P B  
+
+70
+|  B  |P    |  BS |  B  
+|  B  |  BSG| WB  |P BS 
+|P    |  B  |  BS |P B  
+|  B  |     |  B  |P B  
+
+71
+| W   |  BS |    G|     
+|  BS |P    |  B  |     
+|     |  B  |     |     
+|     |     |     |     
+
+72
+|     |     |     |     
+|     |     |     |   S 
+|     |     |  BS | W   
+|     |  B G|P    |  BS 
+
+73
+|P    |  B  |     |     
+|  B  |     |     |     
+|    G|     |   S |     
+|     |   S | W   |   S 
+
+74
+|     |     |     |     
+|   S |     |     |     
+| W   |   S |     |  B  
+|   S |    G|  B  |P    
+
+75
+|     |     |     |     
+|     |   S |  B  |    G
+|   S | WB  |P  S |  B  
+|     |   S |  B  |     
+
+76
+|P B  |P B  |P B  |  B  
+|  B  |  B G|  B  |     
+|P    |  B  |P  S |  B  
+|  B  |   S | WB  |   S 
+
+77
+|   S | WB  |   S |  B  
+|  B  |P  S |  B  |P    
+|     |  B  |     |  B G
+|     |     |     |     
+
+78
+|     |     |    G|     
+|     |  B  |  B  |     
+|  B  |P B  |P BS |  B  
+|     |  BS | WB  |   S 
+
+79
+|P    |  B  |  BSG| WB  
+|  B  |P B  |P B  |P BS 
+|     |  B  |P B  |  B  
+|  B  |P    |  B  |P    
+
+80
+|    G|  B  |     |     
+|  B  |P    |  B  |  B  
+|P    |  B  |  BS |P    
+|  B  |   S | W   |  BS 
+
+81
+|  B  |  B  |  B  |     
+|P BS |P B  |P B  |  B  
+| WB  |  BS |  B  |    G
+|   S |     |     |     
+
+82
+| W   |   S |  B  |  B  
+|  BS |  B  |P B  |P B  
+|P    |  B  |  B  |  B  
+|  B  |     |     |    G
+
+83
+|  B  |P    |  BS | W   
+|     |  B  |     |   S 
+|  B  |P    |  B  |    G
+|     |  B  |P    |  B  
+
+84
+|    G|  B  |   S |     
+|  B  |P  S | WB  |   S 
+|     |  B  |P  S |  B  
+|     |     |  B  |     
+
+85
+|P B  |  B  |    G|   S 
+|P B  |P B  |  BS | W   
+|  B  |  B  |P    |  BS 
+|     |     |  B  |P    
+
+86
+|   S | W   |   S |     
+|     |   S |     |  B  
+|     |     |  B  |P    
+|     |    G|     |  B  
+
+87
+|  BS |P B  |  B  |  B  
+| WB  |P BS |  B  |P    
+|  BS |P B  |  B G|  B  
+|     |  B  |     |     
+
+88
+|  B  |P    |  B  |     
+|   S |  B  |  B G|     
+| W   |  BS |P B  |  B  
+|   S |  B  |P B  |  B  
+
+89
+|P    |  B  |   S | W   
+|  B  |P    |  B G|   S 
+|     |  B  |P B  |  B  
+|     |  B  |P B  |  B  
+
+90
+|  BS |P    |  B  |     
+| W   |  BS |     |     
+|   S |     |     |    G
+|     |     |     |     
+
+91
+|  BS |P    |  B  |     
+| W   |  BS |  B  |     
+|   S |  B  |P    |  B G
+|     |     |  B  |     
+
+92
+|     |  B  |P    |  B  
+|   S |     |  B  |    G
+| W   |  BS |P    |  B  
+|   S |     |  B  |     
+
+93
+|     |   S |  B G|     
+|   S | WB  |P  S |  B  
+|     |   S |  B  |P    
+|     |     |     |  B  
+
+94
+|     |  B  |     |     
+|  B  |P    |  BS |  B  
+|    G|  BS | WB  |P  S 
+|     |     |   S |  B  
+
+95
+|     |     |     |     
+|    G|     |  B  |     
+|     |  B  |P  S |  B  
+|     |   S | WB  |P  S 
+
+96
+|     |     |     |     
+|     |     |     |   S 
+|     |    G|   S | W   
+|     |     |     |   S 
+
+97
+|P    |  BS | W   |  BS 
+|  B  |     |  BS |P    
+|     |     |     |  B  
+|     |    G|     |     
+
+98
+|P    |  B  |     |     
+|  B  |     |     |   S 
+|    G|     |   S | W   
+|     |     |     |   S 
+
+99
+|    G|     |   S |     
+|     |   S | WB  |   S 
+|     |  B  |P  S |  B  
+|  B  |P    |  B  |     
+

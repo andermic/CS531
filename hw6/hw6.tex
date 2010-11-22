@@ -1,0 +1,198 @@
+\documentclass{article}
+\usepackage[pdftex]{graphicx}
+\usepackage{amsmath}
+\author{Michael Anderson}
+\title{Homework Set 6}
+\begin{document}
+\maketitle
+\newpage
+\begin{enumerate}
+\item[\textbf{8.3}]
+Each constant symbol in $c$ may be mapped to any of the objects in the domain
+D, so there are $D^c$ possible sets of mappings.\\
+
+$k$-ary relations contain a set
+permutations of size $k$ pulled from the set of constant objects, giving
+$P^c_k$ such permutations, each of which either is or is not contained within
+a given relation. Thus, there are $2^{P^c_k}$ possible k-ary relations. Since
+there are $p_k$ many orthogonal k-ary relations, there are 
+$\prod^A_{k=1} 2^{(P^c_k)(p_k)}$ many possible sets of relations.\\
+
+In a $k$-ary function each of the $P^c_k$ tuples is mapped to one of the $c$
+constant symbols or the invisible object, giving $(P^c_k)(c+1)$ possible
+functions. There are then $\prod^A_{k=1} [(P^c_k)(c+1)]^{p_k}$ many possible
+sets of functions.\\
+
+Since the mappings of constant objects, the functions, and the relations are
+all orthogonal to each other, the total number of possible models is:
+\[
+(D^c)(\prod^A_{k=1} 2^{(P^c_k)(p_k)})(\prod^A_{k=1} [(P^c_k)(c+1)]^{p_k})
+\]
+
+\item[\textbf{8.9}]
+\begin{enumerate}
+\item[a)]
+\begin{enumerate}
+\item[i.] 2, because function arguments can only contain terms.
+\item[ii.] 1
+\item[iii.] 3, because this can be true if only one of Paris or Marseilles are in France.
+\end{enumerate}
+
+\item[b)]
+\begin{enumerate}
+\item[i.] 1
+\item[ii.] 3, because it is always true if $c$ can take non-country values.
+\item[iii.] 3, because it is always true if $c$ can take non-country values.
+\item[iv.] 2, because function arguments can only contain terms.
+\end{enumerate}
+
+\item[c)]
+\begin{enumerate}
+\item[i.] 3, because it is always false if $c$ can take non-country values.
+\item[ii.] 1
+\item[iii.] 3, because it is false even if c is ever not a country, and is also
+not in South America.
+\item[iv.] 3, because it is always false if $c$ can take non-country values.
+\end{enumerate}
+
+\item[d)]
+\begin{enumerate}
+\item[i.] 1
+\item[ii.] 1
+\item[iii.] 3, because it is true if some regions in Europe border a region in
+South America.
+\item[iv.] 1
+\end{enumerate}
+
+\item[e)]
+\begin{enumerate}
+\item[i.] 1
+\item[ii.] 1
+\item[iii.] 3, because it is false if x or y are not countries, or if they share
+a border, or they share a map color.
+\item[iv.] 2, because the grammar does not contain $\ne$.
+\end{enumerate}
+
+\end{enumerate}
+\item[\textbf{8.10}]
+\begin{enumerate}
+\item[a)] $Occupation(Emily, Surgeon) \vee Occupation(Emily, Lawyer)$
+\item[b)] $Occupation(Joe, Actor) \wedge [\exists o \; \neg(o=Actor) \wedge Occupation(Joe, o)]$
+\item[c)] $\forall p \; Occupation(p, Surgeon) \Rightarrow Occupation(p, Doctor)$
+\item[d)] $\neg[\exists p \; Occupation(p,Lawyer) \wedge Customer(Joe,p)]$
+\item[e)] $\exists p \; Boss(p,Emily) \wedge Occupation(p, Lawyer)$
+\item[f)] $\exists p1 \; [\forall p2 \; Customer(p2,p1) \Rightarrow Occupation(p2,Doctor)]$
+\item[g)] $\forall p1 \; Occupation(p1,Surgeon) \Rightarrow [\exists p2 \; Customer(p1,p2) \wedge Occupation(p2, Lawyer)]$
+\end{enumerate}
+
+\item[\textbf{8.13}]
+\begin{enumerate}
+\item[a)]
+\[
+\forall s \; Breezy(s) \Rightarrow \exists r \; Adjacent(r,s) \wedge Pit(r)
+\]\[
+\forall s \; \neg[Breezy(s)] \Rightarrow \neg[\exists r \; Adjacent(r,s) \wedge Pit(r)]
+\]
+Now reduce the conjunction to Equation (8.4):
+\[
+(\forall s \; Breezy(s) \Rightarrow \exists r \; Adjacent(r,s) \wedge Pit(r)) \wedge
+(\forall s \; \neg[Breezy(s)] \Rightarrow \neg[\exists r \; Adjacent(r,s) \wedge Pit(r)])
+\]
+\[
+(\forall s \; Breezy(s) \Rightarrow \exists r \; Adjacent(r,s) \wedge Pit(r)) \wedge
+(\forall s \; Breezy(s) \; \vee \; \neg[\exists r \; Adjacent(r,s) \wedge Pit(r)])
+\]
+\[
+(\forall s \; Breezy(s) \Rightarrow \exists r \; Adjacent(r,s) \wedge Pit(r)) \wedge
+(\forall s \; \neg[\exists r \; Adjacent(r,s) \wedge Pit(r)] \; \vee \; Breezy(s))
+\]
+\[
+(\forall s \; Breezy(s) \Rightarrow \exists r \; Adjacent(r,s) \wedge Pit(r)) \wedge
+(\forall s \; \exists r \; Adjacent(r,s) \wedge Pit(r) \Rightarrow Breezy(s))
+\]
+\[
+\forall s \; Breezy(s) \Leftrightarrow \exists r \; Adjacent(r,s) \wedge Pit(r)
+\]
+
+\item[b)]
+\[
+\forall s \; Pit(s) \Rightarrow [\forall r \; Adjacent(r,s) \Rightarrow Breezy(r)]
+\]
+This is insufficient, because we are only saying that a pit causes breezes in
+adjacent squares. Equation (8.4) also implies that a breeze causes a pit in one
+or more adjacent squares. Thus the following axiom is also necessary:
+\[
+\forall s \; Breezy(s) \Rightarrow \exists r \; Adjacent(r,s) \wedge Pit(r)
+\]
+\end{enumerate}
+
+\item[\textbf{8.20}]
+\begin{enumerate}
+\item[a)]
+\[
+\exists y \; \neg(y \times (1+1) < x) \wedge \neg(x < y \times (1+1))
+\]
+\item[b)]
+\[
+\neg(\exists y,z \; (1<y) \wedge (y<x) \wedge (\neg[(y \times z) < x] \wedge \neg[x < (y \times z)]))
+\]
+\item[c)]
+\[
+\forall x \; [\exists y \; \neg(y \times (1+1) < x) \wedge \neg(x < y \times (1+1))] \Rightarrow
+\]\[
+[\exists p1,p2 (\neg(\exists y1,z1 \; (1<y1) \wedge (y1<p1) \wedge(\neg[(y1 \times z1) < p1] \wedge \neg[p1 < (y1 \times z1)]))) \wedge
+\]\[
+(\neg(\exists y2,z2 \; (1<y2) \wedge (y2<p2) \wedge (\neg[(y2 \times z2) < p2] \wedge \neg[p2 < (y2 \times z2)]))) \wedge
+\]\[
+\neg[(p1+p2) < x] \wedge \neg[x < (p1+p2)]]
+\]
+\end{enumerate}
+
+\item[\textbf{8.24}]
+$Student(p)$: Predicate. Person p is a student.\\
+$Spring2001(c)$: Preciate. Class c was offered in Spring 2001.\\
+$Took(p, c)$: Predicate. Person p took class c.\\
+$Passed(p, c)$: Predicate. Person p passed class c.\\
+$Score(c)$: Function. Returns the best score in class c.\\
+$Higher(s1, s2)$: Predicate. Score s1 is higher than score s2.\\
+$Buy(p, o)$: Predicate. Person p buys policy o.\\
+$Smart(p)$: Predicate. Person p is smart.\\
+$Expensive(o)$: Predicate. Policy o is expensive.\\
+$Job(p, j)$: Predicate. Person p has job j.\\
+$Sell(p1, p2)$ Predicate. Person p1 sells policies to person p2.\\
+$Insured(p)$: Predicate. Person p is insured.\\
+$ManInTown(p)$: Predicate. Person p is a man in town.\\
+$Shaves(p1, p2)$: Predicate. Person p1 shaves person p2.\\
+$UKBorn(p)$: Predicate. Person p was born in the UK.\\
+$UKbyBirth(p)$: Predicate. Person p is a UK citizen by birth.\\
+$UKbyDescent(p)$: Predicate. Person p is a UK citizen by descent.\\
+$UKResident(p)$: Predicate. Person p is a UK Resident.\\
+$Father(p)$: Function. Returns the father of p.
+$Mother(p)$: Function. Returns the mother of p.
+$Fool(p1,p2,t)$ Predicate. Person p1 can fool person p2 at time t.\\
+$Speaks(x,l)$ Predicate. Person x speaks language l.\\
+$French, Greek$: Constants denoting classes.\\
+$Agent, Barber, Politician$: Constants denoting jobs.
+$Greek_person$: Constant denoting an ethnicity.\\
+
+\begin{enumerate}
+\item[a)] $\exists p \; Student(p) \wedge Took(p,French) \wedge Spring2001(French)$
+\item[b)] $\forall p \; [Student(p) \wedge Took(p,French)] \Rightarrow Passed(p,French)$
+\item[c)] $\exists p1 \; Student(p1) \wedge Took(p1,Greek) \wedge Spring2001(Greek)
+\wedge [\forall p2 \; (Student(p2) \wedge Took(p2,Greek) \wedge Spring2001(Greek)]]$
+\item[d)] $Higher(Score(Greek), Score(French))$
+\item[e)] $\forall p \; [\exists o \; Buy(p, o)] \Rightarrow Smart(p)$
+\item[f)] $\neg[\exists p,o \; Buy(p, o) \wedge Expensive(o)]$
+\item[g)] $\exists p1 \; Job(p1, Agent) \wedge [\forall p2 \; Sell(p1, p2) \Rightarrow \neg Insured(p2)]$
+\item[h)] $\exists p1 \; Job(p1, Barber) \wedge [\forall p2 \; (ManInTown(p2)
+\wedge \neg Shaves(p2, p2)) \Rightarrow Shaves(p1, p2)]$
+\item[i)] $\forall p \; (UKBorn(p) \wedge [(UKResident(Father(p)) \vee UKbyBirth(Father(p)) \vee UKbyDescent(Father(p))) 
+\wedge (UKResident(Mother(p)) \vee UKbyBirth(Mother(p)) \vee UKbyDescent(Mother(p)))]) \Rightarrow UkbyBirth(p)$
+\item[j)] $\forall p \; ([UKbyBirth(Father(p)) \vee UKbyBirth(Mother(p))] \wedge \neg UKBorn(p)) \Rightarrow UKbyDescent(p)$
+\item[k)] $\forall p1 \; Job(p1,Politician) \Rightarrow [(\exists p2 \; \forall t \; Fool(p1,p2,t)) \wedge
+(\forall p2 \; \exists t \; Fool(p1,p2,t)) \wedge \neg(\forall p2,t \; Fool(p1,p2,t))]$
+\item[l)] $\forall p1,p2 [Greek\_person(p1) \wedge Greek\_person(p2)] \Rightarrow [\exists l \; Speaks(p1,l) \wedge Speaks(p2,l)]$
+\end{enumerate}
+
+\end{enumerate}
+\end{document}

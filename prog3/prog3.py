@@ -4,9 +4,15 @@ from copy import deepcopy # deepcopy() returns a deepcopy of an object
 
 class Board:
     b = list()
+    most_constrained = bool()
+    nakes_triples = bool()
+    no_calls = int()
 
-    def __init__(self, board):
+    def __init__(self, board, naked, mc):
         self.b = board
+        self.naked_triples = naked
+        self.most_constrained = mc
+        no_calls = 0
 
     def display(self):
         #system('clear')
@@ -59,7 +65,7 @@ class Board:
                     domains[i].append(domain)
         return domains
 
-    def apply_rule1(self,naked_triples):
+    def apply_rule1(self):
         # Calculate the domains of empty cells using get_domain(),
         #  which applies the row, column, and box constraints. When a cell has
         #  only one value in its domain, assign the cell that value. If after
@@ -67,22 +73,24 @@ class Board:
         #  it can do, and so return. If a cell ever has an empty domain, return
         #  failure.
         keep_going = True
+        inferences = []
         while(keep_going):
             keep_going = False
             domains = self.get_domains()
             if domains == False:
-                return False
-            if naked_triples:
+                return [False] + inferences
+            if self.naked_triples:
                 domains = self.apply_naked_triples(domains)
             for i in range(9):
                 for j in range(9):
                     if self.b[i][j] == '-':
                         if len(domains[i][j]) == 1:
                             self.b[i][j] = domains[i][j][0]
+                            inferences.append([i,j])
                             keep_going = True
-        return True
+        return [True] + inferences
 
-    def apply_rule2(self,naked_triples):
+    def apply_rule2(self):
         # Calculate the domain of all empty cells using get_domain(). If a
         #  value is only in the domain of one cell within a row, column, or
         #  box, assign that value to that cell. Return after no assignments
@@ -93,58 +101,60 @@ class Board:
         #  of one cell that are not in the domains of other cells in that row,
         #  column, or box.
         keep_going = True
-        while(keep_going):
-            keep_going = False
+        inferences = []
+        # Get the initial domain of every cell. Return failure if any are
+        #  empty.
+        domains = self.get_domains()
+        if domains == False:
+            return [False] + inferences
 
-            # Get the initial domain of every cell. Return failure if any are
-            #  empty.
-            domains = self.get_domains()
-            if domains == False:
-                return False
+        if self.naked_triples:
+            domains = self.apply_naked_triples(domains)
 
-            if naked_triples:
-                domains = self.apply_naked_triples(domains)
-
-            for i in range(1,10):
-                si = str(i)
-                for j in range(9):
-                    # Check for single domain instance of i in rows
-                    row_doms = [domains[j][k] for k in range(9) if len(domains[j][k]) != 1]
-                    if row_doms == []:
-                        continue
-                    count = reduce(lambda x,y: x+y, row_doms).count(si)
-                    if count == 1:
-                        for k in range(9):
-                            if si in domains[j][k]:
-                                self.b[j][k] = si
-                                keep_going = True
-                                break
-                    # "                                   " in columns
-                    col_doms = [domains[k][j] for k in range(9) if len(domains[k][j]) != 1]
-                    if col_doms == []:
-                        continue
-                    count = reduce(lambda x,y: x+y, col_doms).count(si)
-                    if count == 1:
-                        for k in range(9):
-                            if si in domains[k][j]:
-                                self.b[k][j] = si
-                                keep_going = True
-                                break
-                for j,k in product(range(3),range(3)):
-                    # "                                   " in boxes
-                    box_rows = range(j*3,(j+1)*3)
-                    box_cols = range(k*3,(k+1)*3)
-                    box_doms = [domains[l][m] for l,m in product(box_rows,box_cols) if len(domains[l][m]) != 1]
-                    if box_doms == []:
-                        continue
-                    count = reduce(lambda x,y: x+y, box_doms).count(si)
-                    if count == 1:
-                        for l,m in product(box_rows,box_cols):
-                            if si in domains[l][m]:
-                                self.b[l][m] = si
-                                keep_going = True
-                                break
-        return True
+        for i in range(1,10):
+            si = str(i)
+            for j in range(9):
+                # Check for single domain instance of i in rows
+                row_doms = [domains[j][c] for c in range(9) if len(domains[j][c]) != 1]
+                if row_doms == []:
+                    continue
+                count = reduce(lambda x,y: x+y, row_doms).count(si)
+                if count == 1:
+                    for c in range(9):
+                        if si in domains[j][c]:
+                            self.b[j][c] = si
+                            inferences.append([j,c])
+                            keep_going = True
+                            break
+            for j in range(9):
+                # "                                   " in columns
+                col_doms = [domains[r][j] for r in range(9) if len(domains[r][j]) != 1]
+                if col_doms == []:
+                    continue
+                count = reduce(lambda x,y: x+y, col_doms).count(si)
+                if count == 1:
+                    for r in range(9):
+                        if si in domains[r][j]:
+                            self.b[r][j] = si
+                            inferences.append([r,j])
+                            keep_going = True
+                            break
+            for j,k in product(range(3),range(3)):
+                # "                                   " in boxes
+                box_rows = range(j*3,(j+1)*3)
+                box_cols = range(k*3,(k+1)*3)
+                box_doms = [domains[l][m] for l,m in product(box_rows,box_cols) if len(domains[l][m]) != 1]
+                if box_doms == []:
+                    continue
+                count = reduce(lambda x,y: x+y, box_doms).count(si)
+                if count == 1:
+                    for l,m in product(box_rows,box_cols):
+                        if si in domains[l][m]:
+                            self.b[l][m] = si
+                            inferences.append([l,m])
+                            keep_going = True
+                            break
+        return [True] + inferences
 
     def apply_naked_triples(self,domains):
         # k=2
@@ -241,17 +251,17 @@ class Board:
  
         return domains
 
-    def backtrack(self,most_constrained):
+    def backtrack(self):
         if self.is_solved():
             return
 
-        # Apply rules......
-
-        sq = []
         domains = self.get_domains()
+        if domains == False:
+            return
 
         # Select a square to try
-        if most_constrained:
+        sq = []
+        if self.most_constrained:
             least_len = [10,-1,-1]
             for i,j in product(range(9),range(9)):
                 leng = len(domains[i][j])
@@ -269,11 +279,22 @@ class Board:
         # Try each value in sq's domain until one works
         for val in domains[sq[0]][sq[1]]:
             self.b[sq[0]][sq[1]] = val
-            if self.get_domains() != False:
-                self.backtrack(most_constrained)
+            
+            inferences = [[sq[0],sq[1]]]
+            r1 = self.apply_rule1()
+            r2 = self.apply_rule2()
+            if len(r1) > 1:
+                inferences += r1[1:]
+            if len(r2) > 1:
+                inferences += r2[1:]
+
+            if r1[0] and r2[0]:
+                self.no_calls += 1
+                self.backtrack()
             if self.is_solved():
                 return
-        self.b[sq[0]][sq[1]] = '-'
+            for inf in inferences:
+                self.b[inf[0]][inf[1]] = '-'
 
     def is_solved(self):
         # If any square is not yet assigned a number, return false. Else return
@@ -289,26 +310,22 @@ class Board:
 #  difficulties.
 repo = open('repository.txt','r').readlines()
 difficulties = [repo[line_num].split()[1].lower() for line_num in range(len(repo)) if line_num % 11 == 0]
-repo = [[i for i in line.replace('0','-') if not i in (' ','\n')] for line in repo]
+repo = [[i for i in line.replace('0','-') if i in ([str(j) for j in range(1,10)] + ['-'])] for line in repo]
 sudokus = [repo[i*11+1:i*11+10] for i in range(len(repo)/11)]
 
-'''
-sudoku = Board(sudokus[2])
-sudoku.backtrack(True)
-sudoku.display()
-'''
-
 a = []
+c = []
 for i in range(len(sudokus)):
-    if i == 33:
-        print 'Processing sudoku %d' % i
-        sudoku = Board(sudokus[i])
-        sudoku.backtrack(True)
-        a += difficulties[i],sudoku.is_solved()
+    print 'Processing sudoku %d' % i
+    sudoku = Board(sudokus[i],naked=True,mc=True)
+    sudoku.backtrack()
+    a += [[sudoku.is_solved(),sudoku.no_calls]]
+    c += [sudoku]
 print
-print len([i for i in a if i == False])
+print a
+print len([i for i in a if i[0] == False])
 
-#55/77 still unsolved after applying rule 1. 26/77 with naked triples
+#16/77 still unsolved after applying rule 1. 26/77 with naked triples
 #54/77 still unsolved after applying rule 1, then rule 2. 26/77 with naked triples
 #51/77 still unsolved after applying the two rules repeatedly. 23/77 with naked triples
 

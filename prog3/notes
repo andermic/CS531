@@ -1,0 +1,18 @@
+rule 1
+rule 2
+naked triples
+most constrained
+
+grade each problem
+is his conjecture correct?
+average number of filled in values by rules
+backtracking w/ and wo/ naked triples
+
+Try each problem:
+	With rule 1 (Easy?)
+	Rule 1 and rule 2 applied together over and over (Medium?)
+	"                " and naked triples, report unfilled squares before backtracking, and compare w/ difficulty (H & E?)
+	Backtracking.
+		Count assignments. How many problems was it helpful in, and how much?
+			Most-constrained v. random
+			Naked triples v. no naked triples
