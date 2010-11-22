@@ -3,6 +3,12 @@ from random import randint
 from itertools import product
 
 FILE_NAME = 'worlds.txt'
+NORTH = 0
+EAST = 1
+SOUTH = 2
+WEST = 3
+
+
 
 class WumpusWorld:
     world = list()
@@ -106,9 +112,13 @@ class WumpusWorld:
 
             print '|_______|_______|_______|_______|'
 
+
+
 class HumanAgent:
     def get_action(self, percept):
         return raw_input('Enter next action: ')
+
+
 
 class ComputerAgent:
     KB = []
@@ -119,6 +129,96 @@ class ComputerAgent:
     #  to the KB.
     def __init__(self):
         pass
+
+    # Helper function for plan_route. Return the value of the smallest
+    #  Manhattan Distance to a goal square from the current square.
+    def heur(cur_square, goals):
+        smallest = -1
+        for goal in goals:
+            dist = abs(cur_square[0] - goal[0]) + abs(cur_square[1] - goal[1])
+            if (smallest == -1) or (dist < smallest):
+                smallest = dist
+        return smallest
+
+    # Helper function for plan_route. Return the actions possible from the
+    #  current square.
+    def actions(cur_square, facing):
+        min_actions = ['turn_left', 'turn_right']
+        if facing == NORTH:
+            if cur_square[0] == 3:
+                return min_actions
+        elif facing == EAST:
+            if cur_square[1] == 3:
+                return min_actions
+        elif facing == SOUTH:
+            if cur_square[0] == 0:
+                return min_actions
+        elif facing == WEST:
+            if cur_square[1] == 0:
+                return min_actions
+        return min_actions + [forward]
+
+    # Helper function for plan_route. Insert a given node into the frontier to
+    #  maintain a descending order by f value.
+    def insert(node, frontier):
+        for i in range(len(frontier)):
+            if node['f'] >= frontier[i]['f']:
+                frontier.insert(i,node)
+                return
+        frontier.append(node)
+
+    # Use A* to calculate a sequence of actions that will bring an agent from
+    #  the given location to one of the goal locations
+    def plan_route(self, current, goals, allowed):
+        root = {}
+        root['sq'] = current[0]
+        root['facing'] = current[1]
+        root['g'] = 0
+        root['f'] = root['g'] + heur(root['sq'], goals)
+        root['parent'] = None
+        root['action'] = None
+        frontier = [root]
+        explored = []
+
+        while True:
+            node = frontier.pop()
+            if node['sq'] in goals:
+                solution = []
+                while(node[parent]) != None:
+                    solution += node['action']
+                    node = node['parent']
+                solution.reverse()
+                return solution
+            explored += (node['sq'], node['facing'])
+            for action in actions(node['sq'], node['facing']):
+                child = {}
+                child['sq'] = node['sq']
+                child['facing'] = node['facing']
+                if action == 'forward':
+                    s = child['sq']
+                    child['sq'] = {NORTH:[s[0]+1,s[1]], EAST:[s[0],s[1]+1], SOUTH:[s[0]-1,s[1]], WEST:[s[0],s[1]-1]}[facing]
+                elif action == 'turn_right':
+                    child['facing'] = (child['facing'] + 1) % 4
+                elif action == 'turn_left':
+                    child['facing'] = (child['facing'] - 1) % 4
+                child['g'] = node['g'] + 1
+                child['f'] = child_node['g'] + heur(child_node['sq'], goals)
+                child['parent'] = node
+                child['action'] = action
+                if (child['sq'], child['facing']) not in explored + [(i['sq'], i['facing']) for i in frontier]:
+                    self.insert(child, frontier)
+                for i in range(len(frontier)):
+                    if (child['sq'], child['facing']) == (frontier[i]['sq'], frontier[i]['facing']):
+                        if child['f'] < frontier[i]['f']:
+                            frontier = frontier[:i] + frontier[i+1:]
+                            self.insert(child, frontier)
+        return action_sequence
+
+    # Use A* to calculate a sequence of actions that lines up a shot to a
+    #  possible wumpus location, and shoots.
+    def plan_shot(self, current, possible_wumpus, safe):
+        action_sequence = []
+        return action_sequence
 
     # Return a list of facts that correspond to a given percept
     def make_percept_sentence(self, percept):
@@ -144,23 +244,9 @@ class ComputerAgent:
         action = str()
         return action
 
-    # Use A* to calculate a sequence of actions that will bring an agent from
-    #  the given location to one of the goal locations
-    def plan_route(self, current, goals, allowed):
-        action_sequence = []
-        return action_sequence
 
-    # Use A* to calculate a sequence of actions
-    def plan_shot(self, current, possible_wumpus, safe):
-        action_sequence = []
-        return action_sequence
 
 class Simulation:
-    NORTH = 0
-    EAST = 1
-    SOUTH = 2
-    WEST = 3
-
     ww = None
     agent = None
 
@@ -208,22 +294,22 @@ class Simulation:
             scream = False
             bump = False
             if action == 'forward':
-                if self.facing == self.NORTH:
+                if self.facing == NORTH:
                     if self.loc[0] == 3:
                         bump = True
                     else:
                         self.loc[0] += 1
-                if self.facing == self.EAST:
+                if self.facing == EAST:
                     if self.loc[1] == 3:
                         bump = True
                     else:
                         self.loc[1] += 1
-                if self.facing == self.SOUTH:
+                if self.facing == SOUTH:
                     if self.loc[0] == 0:
                         bump = True
                     else:
                         self.loc[0] -= 1
-                if self.facing == self.WEST:
+                if self.facing == WEST:
                     if self.loc[1] == 0:
                         bump = True
                     else:
@@ -246,7 +332,7 @@ class Simulation:
                 if self.ww.world[self.loc[0]][self.loc[1]]['g']:
                     self.ww.world[self.loc[0]][self.loc[1]]['g'] = False
             elif action == 'shoot':
-                dir = {self.NORTH:(self.loc[0]+1,4), self.EAST:(self.loc[1]+1,4), self.SOUTH:(0,self.loc[0]), self.WEST:(0,self.loc[1])}[self.facing]
+                dir = {NORTH:(self.loc[0]+1,4), EAST:(self.loc[1]+1,4), SOUTH:(0,self.loc[0]), WEST:(0,self.loc[1])}[self.facing]
                 if self.has_arrow:
                     self.has_arrow = False
                     for i in range(*dir):
