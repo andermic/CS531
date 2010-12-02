@@ -1,7 +1,7 @@
 ============================== Prover9 ===============================
 Prover9 (32) version 2009-11A, November 2009.
-Process 4995 was started by andermic on andermic-laptop,
-Wed Dec  1 21:40:31 2010
+Process 6039 was started by andermic on andermic-laptop,
+Thu Dec  2 07:04:04 2010
 The command was "./prover9 -f input.txt".
 ============================== end of head ===========================
 
@@ -52,7 +52,7 @@ Demod_attempts=0. Demod_rewrites=0.
 Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
 Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=0.
 Megabytes=0.17.
-User_CPU=0.04, System_CPU=0.00, Wall_clock=0.
+User_CPU=0.03, System_CPU=0.01, Wall_clock=0.
 
 Megs malloced by palloc(): 20.
   type (bytes each)        gets      frees     in use      bytes
@@ -72,8 +72,8 @@ just (  12)                  32          0         32      0.4 K
 parajust (  16)               0          0          0      0.0 K
 instancejust (   8)           0          0          0      0.0 K
 ivyjust (  24)                0          0          0      0.0 K
-formula (  28)             3977       3189        788     21.5 K
-    formula arg arrays:                                    9.3 K
+formula (  28)             4939       3919       1020     27.9 K
+    formula arg arrays:                                   22.9 K
 topform (  52)               32          0         32      1.6 K
 clist_pos (  20)              0          0          0      0.0 K
 clist (  16)                  0          0          0      0.0 K
@@ -105,21 +105,19 @@ avl_node (  20)               0          0          0      0.0 K
 
 Memory report, 1 @ 20 = 20 megs (0.16 megs used).
 List   1, length      69,      0.3 K
-List   2, length     118,      0.9 K
+List   2, length     119,      0.9 K
 List   3, length      46,      0.5 K
-List   4, length     201,      3.1 K
-List   5, length     361,      7.1 K
-List   6, length       7,      0.2 K
-List   7, length     276,      7.5 K
-List   8, length       5,      0.2 K
-List   9, length       4,      0.1 K
-List  10, length       4,      0.2 K
-List  11, length      20,      0.9 K
-List  12, length      34,      1.6 K
-List  13, length      87,      4.4 K
-List  14, length      54,      3.0 K
-List  15, length      19,      1.1 K
-List  16, length       3,      0.2 K
+List   4, length     203,      3.2 K
+List   5, length     362,      7.1 K
+List   6, length      14,      0.3 K
+List   7, length      84,      2.3 K
+List   8, length      20,      0.6 K
+List   9, length       9,      0.3 K
+List  10, length       5,      0.2 K
+List  11, length      11,      0.5 K
+List  12, length      12,      0.6 K
+List  13, length      10,      0.5 K
+List  16, length       1,      0.1 K
 List  17, length       3,      0.2 K
 List  18, length       1,      0.1 K
 List  19, length       1,      0.1 K
@@ -151,7 +149,7 @@ List  44, length       1,      0.2 K
 List  45, length       1,      0.2 K
 List  46, length       1,      0.2 K
 List  47, length       1,      0.2 K
-List  48, length       1,      0.2 K
+List  48, length       2,      0.4 K
 List  49, length       1,      0.2 K
 List  50, length       1,      0.2 K
 List  51, length       1,      0.2 K
@@ -203,7 +201,6 @@ List  96, length       1,      0.4 K
 List  97, length       1,      0.4 K
 List  98, length       1,      0.4 K
 List  99, length       1,      0.4 K
-List 320, length       1,      1.2 K
 
 ============================== SELECTOR REPORT =======================
 Sos_deleted=0, Sos_displaced=0, Sos_size=0
@@ -214,4 +211,4 @@ Sos_deleted=0, Sos_displaced=0, Sos_size=0
 
 Exiting.
 
-Process 4995 exit (SIGINT) Wed Dec  1 21:40:31 2010
+Process 6039 exit (SIGINT) Thu Dec  2 07:04:04 2010

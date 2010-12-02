@@ -292,13 +292,13 @@ class ComputerAgent:
             return []
 
         actions, goal_square, goal_facing = self.plan_route([current[0],current[1]], goals, safe)
-        if found_goal[0] == possible_wumpus[0]:
-            if found_goal[1] > possible_wumpus[1]:
+        if goal_square[0] == possible_wumpus[0]:
+            if goal_square[1] > possible_wumpus[1]:
                 need_to_face = WEST
             else:
                 need_to_face = EAST
         else:
-            if found_goal[0] > possible_wumpus[0]:
+            if goal_square[0] > possible_wumpus[0]:
                 need_to_face = SOUTH
             else:
                 need_to_face = NORTH
@@ -358,7 +358,7 @@ class ComputerAgent:
         self.KB += facts
 
     # Ask the agent to provide the best action given its current KB and the
-    #  current percept
+    #  current percept. Based on Russell & Norvig p. 270.
     def get_action(self, percept):
         self.tell(self.make_percept_sentence(percept))
         safe = [[i[0],i[1]] for i in product(range(4),range(4)) if self.ask('ok(sq%d%d)' % (i[0],i[1]))]

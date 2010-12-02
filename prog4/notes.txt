@@ -19,3 +19,10 @@ climb
 
 report:
 agent initially faces north
+
+abstract
+pseudocode
+encoded knowledge in first-order logic
+experimental setup
+results
+discussion/conclusion
