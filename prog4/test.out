@@ -1,6 +1,0 @@
-Asserted axiom: (!A ?x (man(?x) => mortal(?x)))
-Asserted axiom: man(Socrates)
-
-Query:  mortal(Socrates) --> c[3] Result: *PROVED*.
-Stats:  0 seconds, 4 clauses generated, 2 proof length.
-
