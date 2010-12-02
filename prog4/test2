@@ -1,0 +1,11 @@
+set(raw).
+set(eval_rewrite).
+
+
+formulas(assumptions).   % synonym for formulas(sos).
+end_of_list.
+
+formulas(goals).         % to be negated and placed in the sos list
+  2+3 == 5.
+end_of_list.
+

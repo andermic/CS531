@@ -1,0 +1,67 @@
+
+An unexpected exception has been detected in native code outside the VM.
+Unexpected Signal : 11 occurred at PC=0x40030056
+Function name=(N/A)
+Library=/lib/i686/libpthread.so.0
+
+NOTE: We are unable to locate the function name symbol for the error
+      just occurred. Please refer to release documentation for possible
+      reason and solutions.
+
+
+
+Current Java thread:
+
+Dynamic libraries:
+08048000-0804c000 r-xp 00000000 00:14 1593841    /direct/pkgs/jdk-1.3.1_02/linux/bin/i386/native_threads/javac
+0804c000-0804d000 rw-p 00003000 00:14 1593841    /direct/pkgs/jdk-1.3.1_02/linux/bin/i386/native_threads/javac
+40000000-40013000 r-xp 00000000 09:00 163991     /lib/ld-2.2.5.so
+40013000-40014000 rw-p 00013000 09:00 163991     /lib/ld-2.2.5.so
+40024000-40025000 r--p 00000000 09:00 98337      /usr/lib/locale/en_US/LC_IDENTIFICATION
+40025000-40026000 r--p 00000000 09:00 163898     /usr/lib/locale/en_US/LC_MEASUREMENT
+40026000-40033000 r-xp 00000000 09:00 163989     /lib/i686/libpthread-0.9.so
+40033000-4003a000 rw-p 0000d000 09:00 163989     /lib/i686/libpthread-0.9.so
+4003b000-40044000 r-xp 00000000 00:14 1367121    /direct/pkgs/jdk-1.3.1_02/linux/jre/lib/i386/native_threads/libhpi.so
+40044000-40045000 rw-p 00008000 00:14 1367121    /direct/pkgs/jdk-1.3.1_02/linux/jre/lib/i386/native_threads/libhpi.so
+40045000-40235000 r-xp 00000000 00:14 1382433    /direct/pkgs/jdk-1.3.1_02/linux/jre/lib/i386/client/libjvm.so
+40235000-40333000 rw-p 001ef000 00:14 1382433    /direct/pkgs/jdk-1.3.1_02/linux/jre/lib/i386/client/libjvm.so
+4034a000-4034c000 r-xp 00000000 09:00 164004     /lib/libdl-2.2.5.so
+4034c000-4034d000 rw-p 00001000 09:00 164004     /lib/libdl-2.2.5.so
+4034d000-4035f000 r-xp 00000000 09:00 164008     /lib/libnsl-2.2.5.so
+4035f000-40360000 rw-p 00012000 09:00 164008     /lib/libnsl-2.2.5.so
+40362000-40383000 r-xp 00000000 09:00 163987     /lib/i686/libm-2.2.5.so
+40383000-40384000 rw-p 00020000 09:00 163987     /lib/i686/libm-2.2.5.so
+40385000-403b9000 r-xp 00000000 09:00 327752     /usr/lib/libstdc++-2-libc6.1-1-2.9.0.so
+403b9000-403c5000 rw-p 00033000 09:00 327752     /usr/lib/libstdc++-2-libc6.1-1-2.9.0.so
+403c7000-403d8000 r-xp 00000000 00:14 1356186    /direct/pkgs/jdk-1.3.1_02/linux/jre/lib/i386/libverify.so
+403d8000-403da000 rw-p 00010000 00:14 1356186    /direct/pkgs/jdk-1.3.1_02/linux/jre/lib/i386/libverify.so
+403da000-403fb000 r-xp 00000000 00:14 1356187    /direct/pkgs/jdk-1.3.1_02/linux/jre/lib/i386/libjava.so
+403fb000-403fd000 rw-p 00020000 00:14 1356187    /direct/pkgs/jdk-1.3.1_02/linux/jre/lib/i386/libjava.so
+403fe000-40412000 r-xp 00000000 00:14 1356188    /direct/pkgs/jdk-1.3.1_02/linux/jre/lib/i386/libzip.so
+40412000-40415000 rw-p 00013000 00:14 1356188    /direct/pkgs/jdk-1.3.1_02/linux/jre/lib/i386/libzip.so
+40415000-41146000 r--s 00000000 00:14 1582644    /direct/pkgs/jdk-1.3.1_02/linux/jre/lib/rt.jar
+41173000-41418000 r--s 00000000 00:14 1582645    /direct/pkgs/jdk-1.3.1_02/linux/jre/lib/i18n.jar
+41418000-4142e000 r--s 00000000 00:14 1582628    /direct/pkgs/jdk-1.3.1_02/linux/jre/lib/sunrsasign.jar
+41b25000-41b26000 r--p 00000000 09:00 98423      /usr/lib/locale/en_US/LC_TELEPHONE
+41b26000-41b27000 r--p 00000000 09:00 98425      /usr/lib/locale/en_US/LC_ADDRESS
+41b27000-41b28000 r--p 00000000 09:00 98424      /usr/lib/locale/en_US/LC_NAME
+41b28000-41b29000 r--p 00000000 09:00 426105     /usr/lib/locale/en_US/LC_PAPER
+41b29000-41b2a000 r--p 00000000 09:00 442481     /usr/lib/locale/en_US/LC_MESSAGES/SYS_LC_MESSAGES
+41b2a000-41b2b000 r--p 00000000 09:00 163897     /usr/lib/locale/en_US/LC_MONETARY
+41b2b000-41b31000 r--p 00000000 09:00 295074     /usr/lib/locale/en_US/LC_COLLATE
+41b31000-41b32000 r--p 00000000 09:00 98338      /usr/lib/locale/en_US/LC_TIME
+41b32000-41b33000 r--p 00000000 09:00 163901     /usr/lib/locale/en_US/LC_NUMERIC
+41b33000-41b5e000 r--p 00000000 09:00 295073     /usr/lib/locale/en_US/LC_CTYPE
+41b70000-41b79000 r-xp 00000000 09:00 164024     /lib/libnss_files-2.2.5.so
+41b79000-41b7a000 rw-p 00009000 09:00 164024     /lib/libnss_files-2.2.5.so
+42000000-4212c000 r-xp 00000000 09:00 163985     /lib/i686/libc-2.2.5.so
+4212c000-42131000 rw-p 0012c000 09:00 163985     /lib/i686/libc-2.2.5.so
+4a700000-4ab7f000 r--s 00000000 00:14 1563987    /direct/pkgs/jdk-1.3.1_02/linux/lib/tools.jar
+
+Local Time = Sat Nov  8 20:37:55 2003
+Elapsed Time = 0
+#
+# The exception above was detected in native code outside the VM
+#
+# Java VM: Java HotSpot(TM) Client VM (1.3.1_02-b02 mixed mode)
+#

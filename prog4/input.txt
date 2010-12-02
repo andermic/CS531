@@ -1,0 +1,20 @@
+formulas(assumptions).
+  at(agent, sq00, t0).
+  cur = t0.
+  WumpusAlive.
+  haveArrow.
+  square(x) <-> ((x = sq00) | (x = sq01) | (x = sq02) | (x = sq03) | (x = sq10) | (x = sq11) | (x = sq12) | (x = sq13) | (x = sq20) | (x = sq21) | (x = sq22) | (x = sq23) | (x = sq30) | (x = sq31) | (x = sq32) | (x = sq33)).
+  adjacent(x,y) <-> square(x) & square(y) & (((x = sq00) & (y = sq01)) | ((x = sq00) & (y = sq10)) | ((x = sq01) & (y = sq00)) | ((x = sq01) & (y = sq02)) | ((x = sq01) & (y = sq11)) | ((x = sq02) & (y = sq01)) | ((x = sq02) & (y = sq03)) | ((x = sq02) & (y = sq12)) | ((x = sq03) & (y = sq02)) | ((x = sq03) & (y = sq13)) | ((x = sq10) & (y = sq00)) | ((x = sq10) & (y = sq11)) | ((x = sq10) & (y = sq20)) | ((x = sq11) & (y = sq01)) | ((x = sq11) & (y = sq10)) | ((x = sq11) & (y = sq12)) | ((x = sq11) & (y = sq21)) | ((x = sq12) & (y = sq02)) | ((x = sq12) & (y = sq11)) | ((x = sq12) & (y = sq13)) | ((x = sq12) & (y = sq22)) | ((x = sq13) & (y = sq03)) | ((x = sq13) & (y = sq12)) | ((x = sq13) & (y = sq23)) | ((x = sq20) & (y = sq10)) | ((x = sq20) & (y = sq21)) | ((x = sq20) & (y = sq30)) | ((x = sq21) & (y = sq11)) | ((x = sq21) & (y = sq20)) | ((x = sq21) & (y = sq22)) | ((x = sq21) & (y = sq31)) | ((x = sq22) & (y = sq12)) | ((x = sq22) & (y = sq21)) | ((x = sq22) & (y = sq23)) | ((x = sq22) & (y = sq32)) | ((x = sq23) & (y = sq13)) | ((x = sq23) & (y = sq22)) | ((x = sq23) & (y = sq33)) | ((x = sq30) & (y = sq20)) | ((x = sq30) & (y = sq31)) | ((x = sq31) & (y = sq21)) | ((x = sq31) & (y = sq30)) | ((x = sq31) & (y = sq32)) | ((x = sq32) & (y = sq22)) | ((x = sq32) & (y = sq31)) | ((x = sq32) & (y = sq33)) | ((x = sq33) & (y = sq23)) | ((x = sq33) & (y = sq32))).
+  time(x) <-> ((x = t0) | (x = t1) | (x = t2) | (x = t3) | (x = t4) | (x = t5) | (x = t6) | (x = t7) | (x = t8) | (x = t9) | (x = t10) | (x = t11) | (x = t12) | (x = t13) | (x = t14) | (x = t15) | (x = t16) | (x = t17) | (x = t18) | (x = t19) | (x = t20) | (x = t21) | (x = t22) | (x = t23) | (x = t24) | (x = t25) | (x = t26) | (x = t27) | (x = t28) | (x = t29) | (x = t30) | (x = t31) | (x = t32) | (x = t33) | (x = t34) | (x = t35) | (x = t36) | (x = t37) | (x = t38) | (x = t39) | (x = t40) | (x = t41) | (x = t42) | (x = t43) | (x = t44) | (x = t45) | (x = t46) | (x = t47) | (x = t48) | (x = t49) | (x = t50) | (x = t51) | (x = t52) | (x = t53) | (x = t54) | (x = t55) | (x = t56) | (x = t57) | (x = t58) | (x = t59) | (x = t60) | (x = t61) | (x = t62) | (x = t63) | (x = t64) | (x = t65) | (x = t66) | (x = t67) | (x = t68) | (x = t69) | (x = t70) | (x = t71) | (x = t72) | (x = t73) | (x = t74) | (x = t75) | (x = t76) | (x = t77) | (x = t78) | (x = t79) | (x = t80) | (x = t81) | (x = t82) | (x = t83) | (x = t84) | (x = t85) | (x = t86) | (x = t87) | (x = t88) | (x = t89) | (x = t90) | (x = t91) | (x = t92) | (x = t93) | (x = t94) | (x = t95) | (x = t96) | (x = t97) | (x = t98) | (x = t99)).
+  visited(x) <-> (exists y ((time(y)) & (at(agent, x, y)))).
+  ok(x) <-> (-(pit(x)) & -(at(Wumpus, x, cur))).
+  (exists x (square(x) & (exists y (time(y) & (at(Wumpus, x, y)))))) -> (all y( all z( (square(z) & (x != z)) -> -(at(Wumpus, z, y))))).
+  ((exists x (square(x) & (exists y (time(y) & (at(Wumpus, x, y)))))) & WumpusAlive) -> (at(Wumpus, x, cur)).
+  (-WumpusAlive) -> (all x ((square(x)) -> (-(at(Wumpus, x, cur))))).
+  breezy(x) <-> (exists y ((adjacent(x,y)) & pit(y))).
+  (smelly(x) & WumpusAlive) <-> (exists y ((adjacent(x,y)) & (at(Wumpus, y, cur)))).
+end_of_list.
+
+formulas(goals).
+  visited(sq33).
+end_of_list.
